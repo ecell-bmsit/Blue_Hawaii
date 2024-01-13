@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Load from "./components/loading.jsx";
 import Text from "./components/textani.jsx";
-import CardStack from "./cardstack_test.jsx";
+import CardStack from "./cardstack.jsx";
 
 function App() {
   const [showLoad, setShowLoad] = useState(true);
