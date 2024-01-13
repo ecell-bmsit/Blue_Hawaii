@@ -1,0 +1,19 @@
+.curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #121212;
+    animation: curtainRise 2s ease-in-out forwards;
+    z-index: 9999;
+  }
+  
+  @keyframes curtainRise {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
