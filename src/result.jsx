@@ -30,6 +30,12 @@ const Result = ({ cardStatusList }) => {
     handleRecommendation();
   }, [inputTags]);
 
+  const handleCityClick = (city) => {
+    console.log("Clicked city:", city);
+
+    // Add additional logic here if needed
+  };
+
   return (
     <div className="result-container">
       {recommendedCities.length > 0 && (
@@ -47,7 +53,11 @@ const Result = ({ cardStatusList }) => {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
-                    <a href={`#${city}`} className="city-link">
+                    <a
+                      href={`#${city}`}
+                      className="city-link"
+                      onClick={() => handleCityClick(city)}
+                    >
                       {city}
                     </a>
                   </td>
