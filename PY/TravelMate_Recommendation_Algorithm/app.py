@@ -3,12 +3,15 @@ from flask_cors import CORS
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from strictjson import strict_json
+import os
+
+os.environ["OPENAI_API_KEY"] = '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'
 
 app = Flask(__name__)
 CORS(app)
 
 # Load and preprocess the data
-df = pd.read_csv("PY/TravelMate_Recommendation_Algorithm/data/india_top_50_cities_with_categories.csv")
+df = pd.read_csv("./data/india_top_50_cities_with_categories.csv")
 df = df.dropna(how="any")
 df = df.drop("Country", axis=1)
 df.set_index("City", inplace=True)
@@ -47,7 +50,7 @@ def recommend_cities():
         return jsonify({"error": str(e)}), 500
 
 
-def create_itinerary(place_name: str, num_days: int, tags: list):
+def create_itinerary_endpoint(place_name: str, num_days: int, tags: list):
     res = strict_json(
         system_prompt="You are an itinerary creator for a {num_days} days trip to {place_name}. Take into consideration the user's preferences which are {tags}. Do not continue the itinerary above {num_days} days.".format(
             num_days=num_days, place_name=place_name, tags=tags
@@ -59,7 +62,6 @@ def create_itinerary(place_name: str, num_days: int, tags: list):
         },
     )
     return res
-
 
 TAGS = [
     "Historical Sites",
@@ -86,22 +88,25 @@ TAGS = [
 
 
 @app.route("/create_itinerary", methods=["POST"])
-def create_itinerary_endpoint():
-    global input_tags
-    data = request.get_json()
+def create_itinerary():
+    try:
+        data = request.get_json()
 
-    place_name = data.get("place_name")
-    num_days = data.get("num_days")
+        place_name = data.get("place_name")
+        num_days = data.get("num_days")
+        input_tags = data.get("input_tags")
 
-    tags = [TAGS[i] for i, tag in enumerate(input_tags) if tag == 1]
+        tags = [TAGS[i] for i, tag in enumerate(input_tags) if tag == 1]
 
-    if place_name and num_days and tags:
-        result = create_itinerary(place_name, num_days, tags)
-        return jsonify(result)
-    else:
-        return jsonify({"error": "Invalid input"}), 400
+        if place_name and num_days and tags:
+            result = create_itinerary_endpoint(place_name, num_days, tags)
+            return jsonify(result)
+        else:
+            return jsonify({"error": "Invalid input"}), 400
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=7860, debug=True)
-    # print([TAGS[i] for i, tag in enumerate([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]) if tag == 1])
