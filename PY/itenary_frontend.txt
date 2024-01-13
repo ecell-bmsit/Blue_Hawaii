@@ -1,0 +1,18 @@
+fetch('http://localhost:7860/create_itinerary', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    place_name: 'Bengaluru',
+    num_days: 3,
+    tags: ['adventure', 'nature', 'history'],
+  }),
+})
+  .then(response => response.json())
+  .then(data => {
+    console.log('Itinerary:', data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
