@@ -1,0 +1,41 @@
+body {
+    background-color: black;
+    color: white;
+  }
+  
+  .result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .centered-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .centered-table th,
+  .centered-table td {
+    border: 1px solid #ffffff;
+    text-align: left;
+    padding: 5px;
+    font-size: 19px;
+  }
+  
+  .centered-table th {
+    background-color: #ffffff;
+    color: black;
+  }
+  
+  .centered-table a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease; /* Smooth transition effect */
+  }
+  
+  .centered-table a:hover {
+    color: #5fdef4; /* Color change on hover */
+  }
+  
