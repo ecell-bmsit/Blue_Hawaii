@@ -7,103 +7,83 @@ const CardStack = () => {
   const characters = [
     {
       name: "Card 1",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fphotos%2Fbeautiful-scenery&psig=AOvVaw2DL0oO9UzkwSyaW_PcWVfd&ust=1705224134831000&source=images&cd=vfe&ved=0CBMQjRxqFwoTCIDdzpeF2oMDFQAAAAAdAAAAABAE",
+      image: "../data/travel_tags_images/historical-sites.jpg",
     },
     {
       name: "Card 2",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/museum.jpg",
     },
     {
       name: "Card 3",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/art-gallery.jpg",
     },
     {
       name: "Card 4",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/pilgrimage.png",
     },
     {
       name: "Card 5",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/beaches.jpg",
     },
     {
       name: "Card 6",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/hiking.png",
     },
     {
       name: "Card 7",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/greenery.jpg",
     },
     {
       name: "Card 8",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/mountains.jpg",
     },
     {
       name: "Card 9",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/shopping.jpg",
     },
     {
       name: "Card 10",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/nightlife.jpg",
     },
     {
       name: "Card 11",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/urban.jpg",
     },
     {
       name: "Card 12",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/desert.jpg",
     },
     {
       name: "Card 13",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/adventure.jpg",
     },
     {
       name: "Card 14",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/cultural-experience.jpg",
     },
     {
       name: "Card 15",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/waterfalls.jpg",
     },
     {
       name: "Card 16",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/caves.jpg",
     },
     {
       name: "Card 17",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/Wildlife_experience.jpg",
     },
     {
       name: "Card 18",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/skiing.jpg",
     },
     {
       name: "Card 19",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/scuba_diving.jpg",
     },
     {
       name: "Card 20",
-      image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicjumbo.com%2Fbeautiful-nature-scenery%2F&psig=AOvVaw061kxQfl7iFAOGFNy98kRS&ust=1705224195796000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCt5aaF2oMDFQAAAAAdAAAAABAD",
+      image: "../data/travel_tags_images/water_activities.jpg",
     },
   ];
 
