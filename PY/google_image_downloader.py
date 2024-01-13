@@ -10,6 +10,24 @@ class GoogleImageDownloader:
     def __init__(self):
         self.driver = webdriver.Chrome()
 
+    def download_image(self, query:str,file_name:str,folder_path:str):
+        # Go to Google Images
+        self.driver.get("https://www.google.com/imghp?hl=EN")
+
+        # Find the search box, enter the query, and submit the form
+        search_box = self.driver.find_element(By.NAME, "q")
+        search_box.send_keys(query)
+        search_box.send_keys(Keys.RETURN)
+
+        # Wait for the results to load
+        self.driver.implicitly_wait(10)
+
+        # Find the first image result
+        image_result = self.driver.find_element(By.CSS_SELECTOR, ".rg_i")
+
+        # Save the image
+        image_result.screenshot(f'{folder_path}/{file_name}.png')
+
     def get_images(self, query: str, folder_path: str, MAX_IMAGE_COUNT: int = 3):
         # Go to Google Images
         self.driver.get("https://www.google.com/imghp?hl=EN")
@@ -62,7 +80,15 @@ class GoogleImageDownloader:
 
 if __name__ == "__main__":
     downloader = GoogleImageDownloader()
-    downloader.download_images_from_query_list(
-        "data/travel_tags", ["apple", "orange", "banana"]
-    )
+    # downloader.download_images_from_query_list(
+    #     "data/travel_tags", ["apple", "orange", "banana"]
+    # )
+    downloader.download_image(query="Dubai",file_name="Dubai",folder_path="data/place_images")
     downloader.destroy()
+
+    # test code
+    # downloader = GoogleImageDownloader()
+    # downloader.download_images_from_query_list(
+    #     "data/travel_tags", ["apple", "orange", "banana"]
+    # )
+    # downloader.destroy()

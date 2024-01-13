@@ -151,15 +151,19 @@ const CardStack = () => {
             </TinderCard>
           )
       )}
-      <div className="button-container">
-        <button className="dislike-button" onClick={handleDislike}>
-          Dislike
-        </button>
-        <button className="like-button" onClick={handleLike}>
-          Like
-        </button>
-      </div>
-      {currentCardIndex === 20 && <Result cardStatusList={cardStatusList} />}
+      {currentCardIndex < characters.length && (
+        <div className="button-container">
+          <button className="dislike-button" onClick={handleDislike}>
+            Dislike
+          </button>
+          <button className="like-button" onClick={handleLike}>
+            Like
+          </button>
+        </div>
+      )}
+      {currentCardIndex === characters.length && (
+        <Result cardStatusList={cardStatusList} />
+      )}
     </div>
   );
 };

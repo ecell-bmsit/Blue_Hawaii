@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
+import "./components/result.css";
 
 const Result = ({ cardStatusList }) => {
   const [inputTags, setInputTags] = useState(cardStatusList);
   const [recommendedCities, setRecommendedCities] = useState([]);
-  console.log(cardStatusList);
 
   const handleRecommendation = async () => {
     try {
@@ -30,16 +30,41 @@ const Result = ({ cardStatusList }) => {
     handleRecommendation();
   }, [inputTags]);
 
+  const handleCityClick = (city) => {
+    console.log("Clicked city:", city);
+
+    // Add additional logic here if needed
+  };
+
   return (
-    <div>
+    <div className="result-container">
       {recommendedCities.length > 0 && (
         <div>
           <h2>Recommended Cities:</h2>
-          <ol>
-            {recommendedCities.slice(0, 10).map((city, index) => (
-              <li key={index}>{city}</li>
-            ))}
-          </ol>
+          <table className="centered-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>City</th>
+              </tr>
+            </thead>
+            <tbody>
+              {recommendedCities.slice(0, 10).map((city, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>
+                    <a
+                      href={`#${city}`}
+                      className="city-link"
+                      onClick={() => handleCityClick(city)}
+                    >
+                      {city}
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>
