@@ -8,23 +8,26 @@ app = Flask(__name__)
 CORS(app)
 
 # Load and preprocess the data
-df = pd.read_csv('data/india_top_50_cities_with_categories.csv')
-df = df.dropna(how='any')
-df = df.drop('Country', axis=1)
-df.set_index('City', inplace=True)
+df = pd.read_csv("PY/TravelMate_Recommendation_Algorithm/data/india_top_50_cities_with_categories.csv")
+df = df.dropna(how="any")
+df = df.drop("Country", axis=1)
+df.set_index("City", inplace=True)
 
 # Calculate similarity matrix
 similarity_matrix = cosine_similarity(df)
 input_tags = None
-@app.route('/recommend_cities', methods=['POST'])
+
+
+@app.route("/recommend_cities", methods=["POST"])
 def recommend_cities():
+    global input_tags
     try:
         # Get input_tags from the POST request
-        global input_tags = request.json['input_tags']
+        input_tags = request.json["input_tags"]
 
         # Validate input_tags
         if not isinstance(input_tags, list) or len(input_tags) != len(df.columns):
-            return jsonify({'error': 'Invalid input_tags format'}), 400
+            return jsonify({"error": "Invalid input_tags format"}), 400
 
         # Convert input_tags to a DataFrame
         input_data = pd.DataFrame([input_tags], columns=df.columns)
@@ -38,10 +41,11 @@ def recommend_cities():
         # Get recommended cities
         recommended_cities = df.index[similar_cities_indices]
 
-        return jsonify({'recommended_cities': recommended_cities.tolist()})
+        return jsonify({"recommended_cities": recommended_cities.tolist()})
 
     except Exception as e:
-        return jsonify({'error': str(e)}), 500    
+        return jsonify({"error": str(e)}), 500
+
 
 def create_itinerary(place_name: str, num_days: int, tags: list):
     res = strict_json(
@@ -56,13 +60,40 @@ def create_itinerary(place_name: str, num_days: int, tags: list):
     )
     return res
 
-@app.route('/create_itinerary', methods=['POST'])
+
+TAGS = [
+    "Historical Sites",
+    "Mueseums",
+    "Art Gallery",
+    "Piligrimage",
+    "Beaches",
+    "Hiking",
+    "Greenery",
+    "Mountains",
+    "Shopping",
+    "Nightlife",
+    "Urban",
+    "Desert",
+    "Adventure",
+    "Cultural Experience",
+    "Waterfalls",
+    "Caves",
+    "Wildlife Experience",
+    "Skiing",
+    "Scuba Diving",
+    "Water Activites",
+]
+
+
+@app.route("/create_itinerary", methods=["POST"])
 def create_itinerary_endpoint():
+    global input_tags
     data = request.get_json()
 
-    place_name = data.get('place_name')
-    num_days = data.get('num_days')
-    tags = data.get('tags')
+    place_name = data.get("place_name")
+    num_days = data.get("num_days")
+
+    tags = [TAGS[i] for i, tag in enumerate(input_tags) if tag == 1]
 
     if place_name and num_days and tags:
         result = create_itinerary(place_name, num_days, tags)
@@ -70,5 +101,7 @@ def create_itinerary_endpoint():
     else:
         return jsonify({"error": "Invalid input"}), 400
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=7860, debug=True)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=7860, debug=True)
+    # print([TAGS[i] for i, tag in enumerate([0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]) if tag == 1])
