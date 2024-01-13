@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
 import os
+import csv
 
 
 class GoogleImageDownloader:
@@ -80,10 +81,14 @@ class GoogleImageDownloader:
 
 if __name__ == "__main__":
     downloader = GoogleImageDownloader()
-    # downloader.download_images_from_query_list(
-    #     "data/travel_tags", ["apple", "orange", "banana"]
-    # )
-    downloader.download_image(query="Dubai",file_name="Dubai",folder_path="data/place_images")
+
+    with open('C:/Projects/Blue_Hawaii/TravelMate_Recommendation_Algorithm/data/india_top_50_cities.csv', 'r') as file:
+        csv_reader = csv.reader(file)
+        next(csv_reader)  # Skip header row
+        for row in csv_reader:
+            city = row[0]
+            print(city)
+            downloader.download_image(query=f"{city} wallpaper",file_name=f"{city}",folder_path="data/place_images")
     downloader.destroy()
 
     # test code
