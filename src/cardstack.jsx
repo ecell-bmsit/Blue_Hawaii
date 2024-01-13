@@ -146,7 +146,7 @@ const CardStack = () => {
                   height: 300,
                 }}
               >
-                <h3>{character.name}</h3>
+                {/* <h3>{character.name}</h3> */}
               </div>
             </TinderCard>
           )

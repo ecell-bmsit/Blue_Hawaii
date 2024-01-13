@@ -11,7 +11,7 @@ class GoogleImageDownloader:
     def __init__(self):
         self.driver = webdriver.Chrome()
 
-    def download_image(self, query:str,file_name:str,folder_path:str):
+    def download_image(self, query: str, file_name: str, folder_path: str):
         # Go to Google Images
         self.driver.get("https://www.google.com/imghp?hl=EN")
 
@@ -27,7 +27,7 @@ class GoogleImageDownloader:
         image_result = self.driver.find_element(By.CSS_SELECTOR, ".rg_i")
 
         # Save the image
-        image_result.screenshot(f'{folder_path}/{file_name}.png')
+        image_result.screenshot(f"{folder_path}/{file_name}.png")
 
     def get_images(self, query: str, folder_path: str, MAX_IMAGE_COUNT: int = 3):
         # Go to Google Images
@@ -79,16 +79,24 @@ class GoogleImageDownloader:
     def destroy(self):
         self.driver.quit()
 
-if __name__ == "__main__":
+
+def city_img_downloader():
     downloader = GoogleImageDownloader()
 
-    with open('C:/Projects/Blue_Hawaii/TravelMate_Recommendation_Algorithm/data/india_top_50_cities.csv', 'r') as file:
+    with open(
+        "C:/Projects/Blue_Hawaii/TravelMate_Recommendation_Algorithm/data/india_top_50_cities.csv",
+        "r",
+    ) as file:
         csv_reader = csv.reader(file)
         next(csv_reader)  # Skip header row
         for row in csv_reader:
             city = row[0]
             print(city)
-            downloader.download_image(query=f"{city} wallpaper",file_name=f"{city}",folder_path="data/place_images")
+            downloader.download_image(
+                query=f"{city} wallpaper",
+                file_name=f"{city}",
+                folder_path="data/place_images",
+            )
     downloader.destroy()
 
     # test code
@@ -97,3 +105,56 @@ if __name__ == "__main__":
     #     "data/travel_tags", ["apple", "orange", "banana"]
     # )
     # downloader.destroy()
+
+
+class GoogleSearcher:
+    def __init__(self):
+        self.driver = webdriver.Chrome()
+
+    def search(self, query: str):
+
+        self.driver.get("https://www.google.com/")
+
+        # Find the search box, enter the query, and submit the form
+        search_box = self.driver.find_element(By.NAME, "q")
+        search_box.send_keys(query)
+        search_box.send_keys(Keys.RETURN)
+
+        # Wait for the results to load
+        self.driver.implicitly_wait(10)
+
+    def open_tabs_for(self,place_name: str):
+        for tag in [
+            "Historical Sites",
+            "Mueseums",
+            "Art Gallery",
+            "Piligrimage",
+            "Beaches",
+            "Hiking",
+            "Greenery",
+            "Mountains",
+            "Shopping",
+            "Nightlife",
+            "Urban",
+            "Desert",
+            "Adventure",
+            "Cultural Experience",
+            "Waterfalls",
+            "Caves",
+            "Wildlife Experience",
+            "Skiing",
+            "Scuba Diving",
+            "Water Activites",
+        ]:
+            self.search("does {place_name} have {tag}".format(place_name=place_name, tag=tag))
+            import time
+            time.sleep(5)
+
+
+    def destroy(self):
+        self.driver.quit()
+    
+if __name__ == "__main__":
+    searcher = GoogleSearcher()
+    searcher.open_tabs_for("Jaipur")
+    # searcher.destroy()
