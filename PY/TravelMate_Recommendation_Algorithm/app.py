@@ -4,11 +4,12 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from strictjson import strict_json
 import os
-
-os.environ["OPENAI_API_KEY"] = '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'
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app)
+
+load_dotenv()
 
 # Load and preprocess the data
 df = pd.read_csv("./data/india_top_50_cities_with_categories.csv")
