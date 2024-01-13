@@ -15,5 +15,5 @@ def recommend_cities(input_tags):
 
 if __name__ == "__main__":
     input_tags = [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0]
-    recommended_cities = recommend_cities(input_tags, similarity_matrix)
+    recommended_cities = recommend_cities(input_tags)
     print(f"Recommended cities based on input tags: {recommended_cities}")
