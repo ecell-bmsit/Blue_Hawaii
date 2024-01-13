@@ -1,7 +1,7 @@
 City,Country,Historical Sites,Mueseums,Art Gallery,Piligrimage,Beaches,Hiking,Greenery,Mountains,Shopping,Nightlife,Urban,Desert,Adventure,Cultural Experience,Waterfalls,Caves,Wildlife Experience,Skiing,Scuba Diving,Water Activites
 Agra,India,1,0,0,1,0,0,0,0,1,0,1,0,0,1,0,0,0,0,0,0
 Amritsar,India,1,0,0,1,0,0,1,0,1,0,1,0,0,1,0,0,0,0,0,0
-Aurangabad (Ajanta & Ellora Caves),India,,,,,,,,,,,,,,,,,,,,
+Aurangabad (Ajanta & Ellora Caves),India,1,1,0,1,0,1,1,0,1,0,0,0,0,1,0,1,1,0,0,0
 Bangalore,India,0,1,1,0,0,0,1,0,1,1,1,0,0,1,0,0,0,0,0,0
 Chennai,India,0,1,1,1,1,0,1,0,1,1,1,0,0,1,0,0,0,0,0,1
 Chandigarh,India,0,1,1,0,0,0,1,0,1,1,1,0,0,1,0,0,0,0,0,0
