@@ -1,56 +1,83 @@
-import React, { useState, useEffect } from "react";
-import XLSX from "xlsx";
+import React, { useEffect, useState } from "react";
+import "./components/Summary.css";
 
-const Summary = ({ selectedCity, numberOfDays }) => {
-  const [cityDetails, setCityDetails] = useState(null);
+const Summary = ({ city, numberOfDays }) => {
+  const [cityData, setCityData] = useState({
+    description: null,
+    imageUrl: null,
+  });
 
   useEffect(() => {
-    const fetchCityDetails = async () => {
-      try {
-        const response = await fetch("path/to/your/file.xlsx"); // Replace with the actual path to your XLSX file
-        const arrayBuffer = await response.arrayBuffer();
-        const data = new Uint8Array(arrayBuffer);
+    const imageUrl = `../data/place_images/${city.toLowerCase()}.png`;
 
-        const workbook = XLSX.read(data, { type: "array" });
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
-
-        // Find the row that matches the selected city
-        const cityRow = XLSX.utils.sheet_to_json(sheet, { header: 1 }).find(
-          (row) => row[0] === selectedCity
+    fetch("../data/place_bio/bio.json")
+      .then((response) => response.json())
+      .then((data) => {
+        const selectedCityData = data.find(
+          (item) => item.City.trim() === city.trim()
         );
 
-        // If the city is found, set its details
-        if (cityRow && cityRow.length >= 2) {
-          setCityDetails({
-            cityName: cityRow[0],
-            cityDetails: cityRow[1],
+        if (selectedCityData) {
+          setCityData({
+            description: selectedCityData.Description,
+            imageUrl: imageUrl,
           });
         } else {
-          console.warn(`Details not found for city: ${selectedCity}`);
+          console.error(`Data for ${city} not found in the JSON file`);
+          setCityData({
+            description: null,
+            imageUrl: null,
+          });
         }
-      } catch (error) {
-        console.error("Error reading XLSX file:", error.message);
-      }
-    };
-
-    fetchCityDetails();
-  }, [selectedCity]); // Run this effect whenever selectedCity changes
+      })
+      .catch((error) => {
+        console.error("Error fetching JSON data:", error);
+        setCityData({
+          description: null,
+          imageUrl: null,
+        });
+      });
+  }, [city]);
 
   return (
-    <div className="summary-container">
-      <h2>Summary</h2>
-      <p>Selected City: {selectedCity}</p>
-      <p>Number of Days: {numberOfDays}</p>
-
-      {cityDetails && (
-        <div>
-          <h3>City Details</h3>
-          <p>
-            <strong>{cityDetails.cityName}:</strong> {cityDetails.cityDetails}
-          </p>
+    <div style={{ display: "flex" }}>
+      <div
+        className="summary-container"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: "450px",
+          padding: "20px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        {cityData.imageUrl !== null && (
+          <img
+            src={cityData.imageUrl}
+            alt={`${city} Image`}
+            style={{ maxWidth: "45%", marginRight: "20px" }}
+          />
+        )}
+        <div style={{ fontSize: "14px" }}>
+          <h2>Summary</h2>
+          {cityData.description !== null ? (
+            <p>Description: {cityData.description}</p>
+          ) : (
+            <p>Data not available</p>
+          )}
         </div>
-      )}
+      </div>
+
+      {/* Iframe on the right side of the screen outside the container */}
+      <div style={{ position:"fixed",right:0, top:0,paddingRight:0,fontSize: "14px" }}>
+    
+        <iframe
+          src="https://akxy4321-travelmate.hf.space"
+          style={{height: "100vh",width:"80vh"}}
+        ></iframe>
+      </div>
     </div>
   );
 };

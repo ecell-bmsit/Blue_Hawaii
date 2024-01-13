@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Logs
 logs
 *.log
@@ -23,7 +23,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-=======
 /venv
-.env
->>>>>>> f47e2e2eb9e4977d6682d23d440eede093e01908
+./PY/TravelMate_Recommendation_Algorithm/.env
+
+
