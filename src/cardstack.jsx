@@ -66,7 +66,6 @@ const CardStack = () => {
                     boxShadow: '5px 10px 18px #888888',
                     borderRadius: 10,
                     height: 300,
-                    width: 300,
                 }}
             >
                 <h3>{character.name}</h3>
