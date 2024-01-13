@@ -15,7 +15,7 @@ function App() {
 
     const textTimer = setTimeout(()=>{
       setShowText(false);
-    },6000);
+    },5500);
 
     return () => {
       clearTimeout(loadTimer);
