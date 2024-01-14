@@ -81,6 +81,8 @@ const Summary = ({ city, numberOfDays, cardStatusList }) => {
         padding: "20px",
         display: "flex",
         alignItems: "center",
+        border: "1px solid white",
+        borderRadius: "10px",
       }}
       >
         {cityData.imageUrl !== null && (
@@ -90,7 +92,7 @@ const Summary = ({ city, numberOfDays, cardStatusList }) => {
             style={{ maxWidth: "45%", marginRight: "20px", paddingTop: '30px'}}
           />
         )}
-        <div style={{ fontSize: "14px", paddingTop: '30px'}}>
+        <div style={{ fontSize: "18px", paddingTop: '30px'}}>
           <h2>{city}</h2>
           {cityData.description !== null ? (
             <p>Description: {cityData.description}</p>

@@ -146,18 +146,19 @@ const CardStack = () => {
                   width: 500
                 }}
               >
-                <h3 style={{ textShadow: '0 0 4px black' }}>{character.name}</h3>
+                <h3 style={{ textShadow: '0 0 8px black' }}>{character.name}</h3>
               </div>
             </TinderCard>
           )
       )}
       {currentCardIndex < characters.length && (
         <div className="button-container">
-          <button className="dislike-button" onClick={handleDislike} style={{color:'black', backgroundColor:'white', width:'200px'}}>
-            <b>Dislike</b>
+          
+          <button className="dislike-button" onClick={handleDislike} style={{color:'black', backgroundColor:'white', width:'200px',justifyContent: "center",paddingBottom: '50px'}}>
+            <b>❌  Dislike </b>
           </button>
-          <button className="like-button" onClick={handleLike} style={{color:'black', backgroundColor:'white', width:'200px'}}>
-          <b>Like</b>
+          <button className="like-button" onClick={handleLike} style={{color:'black', backgroundColor:'white', width:'200px', justifyContent:"center",paddingBottom: '50px'}}>
+          <b>Like  ❤️</b>
           </button>
         </div>
       )}
