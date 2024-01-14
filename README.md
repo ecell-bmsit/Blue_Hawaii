@@ -1,4 +1,18 @@
-<<<<<<< HEAD
+# Steps to run
+API Keys: 
+#### generate your openai key here : https://platform.openai.com/account/api-keys 
+#### generate your google palm api key here : https://ai.google.dev/palm_docs/setup
+place both keys inside a file .env
+---
+Install requirements : 
+#### pip install -r PY/requirements.txt 
+---
+Start python flask server : 
+---
+Start React using npm :
+#### npm run dev
+___
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
