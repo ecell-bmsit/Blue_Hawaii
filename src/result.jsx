@@ -41,7 +41,7 @@ const Result = ({ cardStatusList }) => {
     let numberOfDays;
 
     do {
-      const numberOfDaysInput = prompt("Enter the number of days in the itinerary (max 7):", "1");
+      const numberOfDaysInput = prompt("Enter the number of days in the itinerary (max 5):", "1");
 
       if (numberOfDaysInput === null) {
         // User clicked Cancel
@@ -50,10 +50,10 @@ const Result = ({ cardStatusList }) => {
 
       numberOfDays = parseInt(numberOfDaysInput, 10);
 
-      if (isNaN(numberOfDays) || numberOfDays < 1 || numberOfDays > 7) {
-        alert("Invalid input. Please enter a valid number between 1 and 7.");
+      if (isNaN(numberOfDays) || numberOfDays < 1 || numberOfDays > 5) {
+        alert("Invalid input. Please enter a valid number between 1 and 5.");
       }
-    } while (isNaN(numberOfDays) || numberOfDays < 1 || numberOfDays > 7);
+    } while (isNaN(numberOfDays) || numberOfDays < 1 || numberOfDays > 5);
 
     // Set the selected city and number of days
     setSelectedCity(city);
