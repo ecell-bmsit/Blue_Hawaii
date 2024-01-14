@@ -36,7 +36,7 @@ const Result = ({ cardStatusList }) => {
 
   const handleCityClick = (city) => {
     console.log("Clicked city:", city);
-    setTableVisible(false); // Hide the table after clicking on a city
+    setTableVisible(false); 
 
     let numberOfDays;
 
@@ -93,7 +93,7 @@ const Result = ({ cardStatusList }) => {
       )}
 
       {selectedCity && numberOfDays && (
-        <Summary city={selectedCity} numberOfDays={numberOfDays} />
+        <Summary city={selectedCity} numberOfDays={numberOfDays} cardStatusList={cardStatusList} />
       )}
     </div>
   );

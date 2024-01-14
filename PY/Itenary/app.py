@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # Import the CORS extension
 from strictjson import strict_json
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})  # Enable CORS for all routes
 
 def create_itinerary(place_name: str, num_days: int, tags: list):
     res = strict_json(
@@ -22,7 +24,7 @@ def create_itinerary_endpoint():
 
     place_name = data.get('place_name')
     num_days = data.get('num_days')
-    tags = data.get('tags')
+    tags = data.get('input_tags')  # Change to match the expected key
 
     if place_name and num_days and tags:
         result = create_itinerary(place_name, num_days, tags)
