@@ -87,10 +87,10 @@ const Summary = ({ city, numberOfDays, cardStatusList }) => {
           <img
             src={cityData.imageUrl}
             alt={`${city} Image`}
-            style={{ maxWidth: "45%", marginRight: "20px" }}
+            style={{ maxWidth: "45%", marginRight: "20px", paddingTop: '30px'}}
           />
         )}
-        <div style={{ fontSize: "14px" }}>
+        <div style={{ fontSize: "14px", paddingTop: '30px'}}>
           <h2>{city}</h2>
           {cityData.description !== null ? (
             <p>Description: {cityData.description}</p>
@@ -110,7 +110,6 @@ const Summary = ({ city, numberOfDays, cardStatusList }) => {
     >
       {createItineraryResult && (
         <div style={{marginTop: '300px', marginRight: '800px'}}>
-          <h4>Create Itinerary Result:</h4>
           <ul style={{ fontSize: "16px"}}>
             {Object.entries(createItineraryResult).map(([day, itinerary]) => (
               <li key={day}>
