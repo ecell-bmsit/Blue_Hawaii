@@ -71,17 +71,17 @@ const Summary = ({ city, numberOfDays, cardStatusList }) => {
 
   return (
     <div style={{ display: "flex" }}>
-      <div
-        className="summary-container"
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "150vh",
-          padding: "20px",
-          display: "flex",
-          alignItems: "center",
-        }}
+    <div
+      className="summary-container"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "150vh",
+        padding: "20px",
+        display: "flex",
+        alignItems: "center",
+      }}
       >
         {cityData.imageUrl !== null && (
           <img
@@ -99,29 +99,41 @@ const Summary = ({ city, numberOfDays, cardStatusList }) => {
           )}
         </div>
       </div>
-      <button onClick={handleCreateItinerary}>Create Itinerary</button>
-        {createItineraryResult && (
-          <div>
-            <h2>Create Itinerary Result:</h2>
-            <ul>
-              {Object.entries(createItineraryResult).map(([day, itinerary]) => (
-                <li key={day}>
-                  <strong>{day}</strong>: {itinerary}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-      {/* Iframe on the right side of the screen outside the container */}
-      <div style={{ position: "fixed", right: 0, top: 0, paddingRight: 0, fontSize: "14px" }}>
-        <iframe
-          src="https://akxy4321-travelmate.hf.space"
-          style={{ height: "100vh", width: "80vh" }}
-        ></iframe>
-      </div>
+      <div
+      className="create-itinerary-container"
+      style={{
+        position: "fixed",
+        top: "80px", // Adjust the top position based on your layout
+        left: "220px", // Adjust the left position based on your layout
+        padding: "20px",
+      }}
+    >
+      {createItineraryResult && (
+        <div style={{marginTop: '300px', marginRight: '800px'}}>
+          <h4>Create Itinerary Result:</h4>
+          <ul style={{ fontSize: "16px"}}>
+            {Object.entries(createItineraryResult).map(([day, itinerary]) => (
+              <li key={day}>
+                <strong>{day}</strong>: {itinerary}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
-  );
+    <button style={{ paddingTop: '20px', marginRight: '1200px' }} onClick={handleCreateItinerary}>
+        Create Itinerary
+      </button>
+
+    {/* Iframe on the right side of the screen outside the container */}
+    <div style={{ position: "fixed", right: 0, top: 0, paddingRight: 0, fontSize: "14px" }}>
+      <iframe
+        src="https://akxy4321-travelmate.hf.space"
+        style={{ height: "100vh", width: "70vh" }}
+      ></iframe>
+    </div>
+  </div>
+);
 };
 
 export default Summary;
