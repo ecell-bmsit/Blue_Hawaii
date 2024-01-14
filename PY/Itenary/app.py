@@ -3,7 +3,7 @@ from flask_cors import CORS  # Import the CORS extension
 from strictjson import strict_json
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})  # Enable CORS for all routes
+CORS(app)
 
 def create_itinerary(place_name: str, num_days: int, tags: list):
     res = strict_json(

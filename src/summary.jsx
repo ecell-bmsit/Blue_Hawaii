@@ -91,21 +91,27 @@ const Summary = ({ city, numberOfDays, cardStatusList }) => {
           />
         )}
         <div style={{ fontSize: "14px" }}>
-          <h2>Summary</h2>
+          <h2>{city}</h2>
           {cityData.description !== null ? (
             <p>Description: {cityData.description}</p>
           ) : (
             <p>Data not available</p>
           )}
         </div>
-        <button onClick={handleCreateItinerary}>Create Itinerary</button>
+      </div>
+      <button onClick={handleCreateItinerary}>Create Itinerary</button>
         {createItineraryResult && (
           <div>
             <h2>Create Itinerary Result:</h2>
-            <pre>{JSON.stringify(createItineraryResult, null, 2)}</pre>
+            <ul>
+              {Object.entries(createItineraryResult).map(([day, itinerary]) => (
+                <li key={day}>
+                  <strong>{day}</strong>: {itinerary}
+                </li>
+              ))}
+            </ul>
           </div>
         )}
-      </div>
 
       {/* Iframe on the right side of the screen outside the container */}
       <div style={{ position: "fixed", right: 0, top: 0, paddingRight: 0, fontSize: "14px" }}>
